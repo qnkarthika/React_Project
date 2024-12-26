@@ -5,6 +5,7 @@ import './HomePage.css';
 function HomePage() {
     const [name, Setname] = useState("");
     const [message, Setmessage] = useState("");
+    const [submitted, setSubmitted] = useState(false); // New state for submission status
 
     function updateName(e) {
         Setname(e.target.value);
@@ -33,10 +34,21 @@ function HomePage() {
 
         currentData.push(newEntry);
 
-    
         localStorage.setItem('details', JSON.stringify(currentData));
 
         console.log(localStorage.getItem('details'));
+
+        // Set the 'submitted' state to true after data is successfully stored
+        setSubmitted(true);
+
+        // Optionally, reset the form after submission
+        Setname("");
+        Setmessage("");
+    }
+
+    // Function to hide the popup when the close button is clicked
+    function closePopup() {
+        setSubmitted(false);
     }
 
     return (
@@ -48,15 +60,25 @@ function HomePage() {
 
             <div className="input-section">
                 <label>Enter your name:</label>
-                <input type="text" name="name" onChange={updateName} className="input-field" />
+                <input type="text" name="name" value={name} onChange={updateName} className="input-field" />
                 <label>Enter your message:</label>
-                <textarea  placeholder='Enter your message here' onChange={updateMessage} className="textarea-field"></textarea>
+                <textarea placeholder='Enter your message here' value={message} onChange={updateMessage} className="textarea-field"></textarea>
             </div>
 
             <div className="button-section">
                 <button onClick={storeData} className="submit-button">Submit</button>
                 <Link to='/Login' className="login-link">Login</Link>
             </div>
+
+            {/* Popup for success message */}
+            {submitted && (
+                <div className="popup">
+                    <div className="popup-content">
+                        <button className="close-btn" onClick={closePopup}>×</button>
+                        <p className="success-message">Submitted successfully!</p>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

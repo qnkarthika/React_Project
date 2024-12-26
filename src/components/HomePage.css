@@ -113,3 +113,47 @@ body {
 .login-link:hover {
     background-color: #220a6a;
 }
+
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+.popup-content {
+    background-color: #28a745; 
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    max-width: 400px;
+    max-height:100px;
+    width: 40%;
+    text-align: center;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.success-message {
+    font-size: 18px;
+    font-weight: bold;
+}
