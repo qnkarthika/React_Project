@@ -5,7 +5,7 @@ import './HomePage.css';
 function HomePage() {
     const [name, Setname] = useState("");
     const [message, Setmessage] = useState("");
-    const [submitted, setSubmitted] = useState(false); // New state for submission status
+    const [submitted, setSubmitted] = useState(false); 
 
     function updateName(e) {
         Setname(e.target.value);
@@ -38,15 +38,14 @@ function HomePage() {
 
         console.log(localStorage.getItem('details'));
 
-        // Set the 'submitted' state to true after data is successfully stored
+       
         setSubmitted(true);
 
-        // Optionally, reset the form after submission
         Setname("");
         Setmessage("");
     }
 
-    // Function to hide the popup when the close button is clicked
+    
     function closePopup() {
         setSubmitted(false);
     }
@@ -70,7 +69,7 @@ function HomePage() {
                 <Link to='/Login' className="login-link">Login</Link>
             </div>
 
-            {/* Popup for success message */}
+            
             {submitted && (
                 <div className="popup">
                     <div className="popup-content">
